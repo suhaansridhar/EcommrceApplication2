@@ -26,6 +26,7 @@ function Checking() {
         const newArray = array.filter(item => item.startsWith("s"));
         setArray(newArray);
     }
+    
   return (
     <div>
       <h1>Checking</h1>
