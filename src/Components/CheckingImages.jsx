@@ -1,7 +1,7 @@
 import React from 'react';
-import photo1 from '../assets/jpeg_43-2.jpg';
-import photo2 from '../assets/jpeg-home.jpg';
-import photo3 from '../assets/nando-jpeg-quality-001.jpg'
+// import photo1 from '../assets/jpeg_43-2.jpg';
+// import photo2 from '../assets/jpeg-home.jpg';
+// import photo3 from '../assets/nando-jpeg-quality-001.jpg';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
