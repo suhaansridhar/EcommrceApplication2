@@ -37,9 +37,22 @@ function AnotherComponent(){
     setDuplicate(array);
   }, []);
 
+  function handleClick(brandName){
+    setArray(duplicate);
+    const newArray = array.filter((element, index) => element.title === brandName);
+    setArray(newArray);
+  }
+
+  function handleReset(){
+    setArray(duplicate);
+  }
+
   return(
       <div className="app--container">
-        <h1>Ecommerce Website <span>prices in euros</span></h1>
+        <h1>Ecommerce Website <span>prices in euros</span></h1><br />
+        <button onClick={() => handleClick("Louis Vuitton")}>Louis Vuitton</button>
+        <button onClick={() => handleClick("Saint Laurent")}>Saint Laurent</button>
+        <button onClick={handleReset}>Reset Filter</button>
         <div className="app--inner--container">
           <SideBar />
           <MainContainer cards = {cards}/>
