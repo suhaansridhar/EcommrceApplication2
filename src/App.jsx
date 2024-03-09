@@ -1,8 +1,4 @@
-import React from 'react/index.js';
-
-import SideBar from './Components/SideBar';
-import MainContainer from './Components/MainContainer';
-
+import { useState, useEffect } from 'react';
 import photo1 from './assets/LouisVuitton_00.webp';
 import photo2 from './assets/LouisVuitton_01.webp';
 import photo3 from './assets/LouisVuitton_02.webp';
@@ -14,11 +10,11 @@ import photo7 from './assets/SaintLaurent_01.avif';
 import photo8 from './assets/SaintLaurent_02.avif';
 import photo9 from './assets/SaintLaurent_03.webp';
 import photo10 from './assets/SaintLaurent_04.jpeg';
-import { useState } from 'react/index.js';
-import { useEffect } from 'react/index.js';
+import CardGenerator from './Components/CardGenerator';
+import SideBar from './Components/SideBar';
+import MainContainer from './Components/MainContainer';
 
-
-function App(){
+function AnotherComponent(){
   const [array, setArray] = useState([
     {title: "Louis Vuitton", source: photo1, price: 389, rating: "4.2/5"},
     {title: "Louis Vuitton", source: photo2, price: 990, rating: "4.0/5"},
@@ -35,7 +31,7 @@ function App(){
 
   const [duplicate, setDuplicate] = useState();
 
-
+  const cards = <CardGenerator array = {array} />
   //have created a duplicate array to store the copy of the original array. 
   useEffect(() => {
     setDuplicate(array);
@@ -46,10 +42,10 @@ function App(){
         <h1>Ecommerce Website <span>prices in euros</span></h1>
         <div className="app--inner--container">
           <SideBar />
-          <MainContainer />
+          <MainContainer cards = {cards}/>
         </div>
       </div>
   )
 }
 
-export default App
+export default AnotherComponent
