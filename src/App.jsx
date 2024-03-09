@@ -29,12 +29,14 @@ function AnotherComponent(){
     {title: "Saint Laurent", source: photo10, price: 799, rating: "4.5/5"}
   ]);
 
-  const [duplicate, setDuplicate] = useState();
+  const [duplicate, setDuplicate] = useState([]);
 
   const cards = <CardGenerator array = {array} />
   //have created a duplicate array to store the copy of the original array. 
   useEffect(() => {
-    setDuplicate(array);
+    //We should use the spread operator to create a copy of the original array or else we are just
+    // referencing the same original array. 
+    setDuplicate([...array]);
   }, []);
 
   function handleClick(brandName){
@@ -52,6 +54,11 @@ function AnotherComponent(){
         <h1>Ecommerce Website <span>prices in euros</span></h1><br />
         <button onClick={() => handleClick("Louis Vuitton")}>Louis Vuitton</button>
         <button onClick={() => handleClick("Saint Laurent")}>Saint Laurent</button>
+        <select name="Sorting" id="">
+          <option>Select an Option</option>
+          <option value="Rating">Rating</option>
+          <option value="Price">Price</option>
+        </select>
         <button onClick={handleReset}>Reset Filter</button>
         <div className="app--inner--container">
           <SideBar />
