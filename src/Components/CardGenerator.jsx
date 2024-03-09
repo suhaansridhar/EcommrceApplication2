@@ -7,10 +7,10 @@ function CardGenerator(props) {
         {props.array.map((element, index) => {
           return(
             <div className = "card--container" key={index}>
-              <img src={props.array.source} />
-              <h4>{props.array.title}</h4>
-              <h4>{props.array.price}</h4>
-              <h4>{props.array.rating}</h4>
+              <img src={element.source} />
+              <h4>{element.title}</h4>
+              <h4>{element.price}</h4>
+              <h4>{element.rating}</h4>
             </div>
           )
         })}
