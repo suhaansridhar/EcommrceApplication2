@@ -35,6 +35,8 @@ function App(){
 
   const [duplicate, setDuplicate] = useState();
 
+
+  //have created a duplicate array to store the copy of the original array. 
   useEffect(() => {
     setDuplicate(array);
   }, []);
