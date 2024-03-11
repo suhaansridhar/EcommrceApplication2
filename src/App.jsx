@@ -15,7 +15,7 @@ import SideBar from './Components/SideBar';
 import MainContainer from './Components/MainContainer';
 
 function AnotherComponent(){
-  const [array, setArray] = useState([
+  const initialArray = [
     {title: "Louis Vuitton", source: photo1, price: 389, rating: "4.2/5"},
     {title: "Louis Vuitton", source: photo2, price: 990, rating: "4.0/5"},
     {title: "Louis Vuitton", source: photo3, price: 512, rating: "3.9/5"},
@@ -27,27 +27,22 @@ function AnotherComponent(){
     {title: "Saint Laurent", source: photo8, price: 399, rating: "4.3/5"},
     {title: "Saint Laurent", source: photo9, price: 499, rating: "4.8/5"},
     {title: "Saint Laurent", source: photo10, price: 799, rating: "4.5/5"}
-  ]);
+  ];
 
-  const [duplicate, setDuplicate] = useState([]);
+  //We don't have to have 2 arrays for useState cases as we are only modifying one of the array.
+  const [array, setArray] = useState(initialArray);
+
+  function handleClick(brandName){
+    if(brandName === "Reset Filter"){
+      setArray(initialArray);
+    }else{
+      const newArray = initialArray.filter(item => item.title === brandName);
+      setArray(newArray);
+    }
+  }
 
   const cards = <CardGenerator array = {array} />
   //have created a duplicate array to store the copy of the original array. 
-  useEffect(() => {
-    //We should use the spread operator to create a copy of the original array or else we are just
-    // referencing the same original array. 
-    setDuplicate([...array]);
-  }, []);
-
-  function handleClick(brandName){
-    setArray(duplicate);
-    const newArray = array.filter((element, index) => element.title === brandName);
-    setArray(newArray);
-  }
-
-  function handleReset(){
-    setArray(duplicate);
-  }
 
   return(
       <div className="app--container">
@@ -59,7 +54,7 @@ function AnotherComponent(){
           <option value="Rating">Rating</option>
           <option value="Price">Price</option>
         </select>
-        <button onClick={handleReset}>Reset Filter</button>
+        <button onClick={() => handleClick("Reset Filter")}>Reset Filter</button>
         <div className="app--inner--container">
           <SideBar />
           <MainContainer cards = {cards}/>
