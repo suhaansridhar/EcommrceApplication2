@@ -25,3 +25,13 @@ img{
 img{
   border: 0.1rem solid white;
 }
+
+.app--container--inner{
+  display: flex;
+
+}
+
+.app--container--inner--sidebar{
+  display: flex;
+  flex-direction: column;
+}

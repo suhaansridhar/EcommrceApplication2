@@ -11,10 +11,9 @@ import photo8 from './assets/SaintLaurent_02.avif';
 import photo9 from './assets/SaintLaurent_03.webp';
 import photo10 from './assets/SaintLaurent_04.jpeg';
 import CardGenerator from './Components/CardGenerator';
-import SideBar from './Components/SideBar';
 import MainContainer from './Components/MainContainer';
 
-function AnotherComponent(){
+function App(){
   const initialArray = [
     {title: "Louis Vuitton", source: photo1, Price: 389, Rating: "4.2/5"},
     {title: "Louis Vuitton", source: photo2, Price: 990, Rating: "4.0/5"},
@@ -63,20 +62,31 @@ function AnotherComponent(){
   return(
       <div className="app--container">
         <h1>Ecommerce Website <span>prices in euros</span></h1><br />
-        <button onClick={() => handleClick("Louis Vuitton")}>Louis Vuitton</button>
-        <button onClick={() => handleClick("Saint Laurent")}>Saint Laurent</button>
-        <select name="Sorting" id="" onChange={(e) => sorting(e.target.value)}>
-          <option>Select an Option</option>
-          <option value="Rating">Rating</option>
-          <option value="Price">Price</option>
-        </select>
-        <button onClick={() => handleClick("Reset Filter")}>Reset Filter</button>
-        <div className="app--inner--container">
-          <SideBar />
-          <MainContainer cards = {cards}/>
+        <div className="app--container--inner">
+
+          <div className="app--container--inner--sidebar">
+            <select name="brandName" onChange={(e) => handleClick(e.target.value)}>
+              <option>Choose the brand</option>
+              <option value="Louis Vuitton">Louis Vuitton</option>
+              <option value="Saint Laurent">Saint Laurent</option>
+            </select>
+
+            <select name="Sorting" id="" onChange={(e) => sorting(e.target.value)}>
+              <option>Select an Option</option>
+              <option value="Rating">Rating</option>
+              <option value="Price">Price</option>
+            </select>
+
+            <button onClick={() => handleClick("Reset Filter")}>Reset Filter</button>
+          </div>
+
+          <div className="app--container--inner--main">
+            <MainContainer cards = {cards}/>
+          </div>
+
         </div>
       </div>
   )
 }
 
-export default AnotherComponent
+export default App
