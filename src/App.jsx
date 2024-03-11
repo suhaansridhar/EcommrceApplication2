@@ -46,8 +46,14 @@ function AnotherComponent(){
     if(sortType === "Price"){
       newArray.sort((a, b) => a.Price - b.Price);
     }else{
-      newArray.sort((a, b) => a.Rating - b.Rating);
+      newArray.sort((a, b) => {
+        const ratingA = parseFloat(a.Rating);
+        const ratingB = parseFloat(b.Rating);
+        return ratingA - ratingB;
+     });
+     setArray(newArray);
     }
+    
     setArray(newArray);
   }
 
