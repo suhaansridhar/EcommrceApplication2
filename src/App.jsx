@@ -41,6 +41,8 @@ function AnotherComponent(){
     }
   }
 
+  //added a sorting function to sort the products based on price and rating. 
+  //Taking the numeric part of the rating will help us to sort.
   function sorting(sortType){
     let newArray = [...array];
     if(sortType === "Price"){
@@ -51,9 +53,7 @@ function AnotherComponent(){
         const ratingB = parseFloat(b.Rating);
         return ratingA - ratingB;
      });
-     setArray(newArray);
     }
-    
     setArray(newArray);
   }
 
