@@ -9,8 +9,8 @@ function CardGenerator(props) {
             <div className = "card--container" key={index}>
               <img src={element.source} />
               <h4>{element.title}</h4>
-              <h4>{element.price}</h4>
-              <h4>{element.rating}</h4>
+              <h4>{element.Price}</h4>
+              <h4>{element.Rating}</h4>
             </div>
           )
         })}
